@@ -35,14 +35,15 @@ exports.supported = !!(element.requestFullscreen
  * Enter fullscreen mode for `el`.
  *
  * @param {Element} [el]
+ * @param {Object} opts - optional
  * @api public
  */
 
-function fullscreen(el){
+function fullscreen(el, opts){
   el = el || element;
-  if (el.requestFullscreen) return el.requestFullscreen();
-  if (el.mozRequestFullScreen) return el.mozRequestFullScreen();
-  if (el.webkitRequestFullscreen) return el.webkitRequestFullscreen();
+  if (el.requestFullscreen) return el.requestFullscreen(opts);
+  if (el.mozRequestFullScreen) return el.mozRequestFullScreen(opts);
+  if (el.webkitRequestFullscreen) return el.webkitRequestFullscreen(opts);
 }
 
 /**

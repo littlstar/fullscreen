@@ -29,7 +29,8 @@ var element = document.documentElement;
 
 exports.supported = !!(element.requestFullscreen
   || element.webkitRequestFullscreen
-  || element.mozRequestFullScreen);
+  || element.mozRequestFullScreen
+  || element.msRequestFullscreen);
 
 /**
  * Enter fullscreen mode for `el`.
@@ -58,7 +59,7 @@ exports.exit = function(){
   if (doc.exitFullscreen) return doc.exitFullscreen();
   if (doc.mozCancelFullScreen) return doc.mozCancelFullScreen();
   if (doc.webkitCancelFullScreen) return doc.webkitCancelFullScreen();
-  if (doc.msCancelFullScreen) return doc.mdCancelFullScreen();
+  if (doc.msExitFullscreen) return doc.msExitFullscreen();
 };
 
 /**
@@ -67,9 +68,12 @@ exports.exit = function(){
 
 function change(prop) {
   return function(){
-    var val = document[prop];
-    if (false === val) { document[prop] = true; }
-    if (null == val) { document[prop] = true; }
+    if (null == document[prop]) {
+      document[prop] = true;
+    } else {
+      document[prop] = !document[prop];
+    }
+
     val = document[prop];
     exports.emit('change', val);
   }
@@ -83,5 +87,6 @@ if (document.addEventListener) {
   document.addEventListener('fullscreenchange', change('fullscreen'));
   document.addEventListener('mozfullscreenchange', change('mozFullScreen'));
   document.addEventListener('webkitfullscreenchange', change('webkitIsFullScreen'));
-  document.addEventListener('msfullscreenchange', change('msFullscreenEnabled'));
+  document.addEventListener('MSFullscreenChange', change('msFullScreen'));
+  document.addEventListener('fullscreenChange', change('msFullScreen'));
 }

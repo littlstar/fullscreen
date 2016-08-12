@@ -5,7 +5,7 @@
 
 ## Installation
 
-    $ component install component/fullscreen
+    $ npm install @littlstar/fullscreen
 
 ## Example
 

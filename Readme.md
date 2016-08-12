@@ -10,7 +10,7 @@
 ## Example
 
 ```js
-var fullscreen = require('fullscreen');
+var fullscreen = require('@littlstar/fullscreen');
 
 fullscreen.on('change', function(full){
   console.log('changed to %s', full ? 'fullscreen' : 'regular');

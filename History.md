@@ -1,4 +1,12 @@
 
+2.0.0 / 2016-08-11
+==================
+
+  * remove component, add npm (#1)
+  * bleh ie11
+  * polyfill fullscreen
+  * Update index.js
+
 1.1.0 / 2015-03-12
 ==================
 
